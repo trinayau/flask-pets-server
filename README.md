@@ -1,2 +1,3 @@
-# flask-pets-server
- Flask app pulling pets from a db and showing on page
+# Flask Pets Database
+ Flask app pulling pets from a database and showing on the page.
+ 
