@@ -1,13 +1,13 @@
 pets = {
     'dogs': [
-        {
+        {   'id': 1,
             'name': 'Spot',
             'age': 2,
             'breed': 'Dalmatian',
             'description': 'Spot is an energetic puppy who seeks fun and adventure!',
             'url': 'https://upload.wikimedia.org/wikipedia/commons/1/15/Dalmatiner_2.jpg'
         },
-        {
+        {   'id': 2,
             'name': 'Shadow',
             'age': 4,
             'breed': 'Border Collie',
@@ -16,7 +16,7 @@ pets = {
         }
     ],
     'cats': [
-        {
+        {   'id': 1,
             'name': 'Snowflake',
             'age': 1,
             'breed': 'Tabby',
@@ -25,7 +25,7 @@ pets = {
         }
     ],
     'rabbits': [
-        {
+        {   'id': 1,
             'name': 'Easter',
             'age': 4,
             'breed': 'Mini Rex',
