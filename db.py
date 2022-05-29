@@ -36,5 +36,5 @@ pets = {
 }
 
 def add_pet(pet_type, pet):
-    pet_copy = pet.copy()
-    pets[pet_type].append(pet_copy)
+    pets[pet_type].append(pet.copy())
+    print(pet.copy(), 'pet')

@@ -16,10 +16,10 @@ def index():
         species = request.form.get('species')
         description = request.form.get('description')
         new_id = len(pets[species])+1
-        new_pet = {name, age, breed, description}
+        new_pet = {"name": name, "age": age, "breed": breed, "description": description}
         print(new_pet, 'new pet')
-        pets[species].append(new_pet)
-        return redirect(url_for('animals', pet_type=species, id=new_id))
+        add_pet(species, new_pet)
+        return redirect(url_for('animals', pet_type=species))
     return render_template('index.html')
 
 @app.route('/animals/<pet_type>')
