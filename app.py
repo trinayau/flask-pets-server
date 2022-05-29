@@ -1,16 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
-from db import pets
+from flask import Flask, render_template, request, redirect, url_for
+from db import pets, add_pet
 from flask_cors import CORS
+from werkzeug import exceptions
+
 app = Flask(__name__, static_url_path='/static', static_folder='static', template_folder='templates')
 CORS(app)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-  return render_template('index.html')
+    if request.method == 'POST':
+        
+        name = request.form.get('name')
+        age = request.form.get('age')
+        breed = request.form.get('breed')
+        species = request.form.get('species')
+        description = request.form.get('description')
+        new_id = len(pets[species])+1
+        new_pet = {name, age, breed, description}
+        print(new_pet, 'new pet')
+        pets[species].append(new_pet)
+        return redirect(url_for('animals', pet_type=species, id=new_id))
+    return render_template('index.html')
 
 @app.route('/animals/<pet_type>')
 def animals(pet_type):
   types = pets[pet_type]
+  print(pet_type)
   return render_template('pet_type.html', pets=types, pet_type=pet_type)
 
 @app.route('/animals/<pet_type>/<int:pet_id>')
@@ -25,6 +40,18 @@ def about():
 @app.route('/contact')
 def contact():
   return render_template('contact.html')
+
+@app.errorhandler(exceptions.NotFound)
+def handle_404(err):
+    return render_template('404.html'), 404
+
+@app.errorhandler(exceptions.BadRequest)
+def handle_400(err):
+    return render_template('400.html'), 400
+
+@app.errorhandler(exceptions.InternalServerError)
+def handle_500(err):
+    return render_template('500.html'), 500
 
 if __name__ == "__main__":
      app.debug = False

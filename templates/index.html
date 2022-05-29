@@ -5,8 +5,27 @@
 <h1>🐶 Trina's Pet Sanctuary 🐨</h1>
 <p>Browse through the links below to find your new furry friend:</p>
 <ul>
-<li><a href="{{ url_for('animals', pet_type='dogs') }}"> 🐶 Dogs</a></li>
-<li><a href="{{ url_for('animals', pet_type='cats') }}"> 🐈‍⬛ Cats</a></li>
-<li><a href="{{ url_for('animals', pet_type='rabbits') }}"> 🐰 Rabbits</a></li>
+    <li><a href="{{ url_for('animals', pet_type='dogs') }}"> 🐶 Dogs</a></li>
+    <li><a href="{{ url_for('animals', pet_type='cats') }}"> 🐈‍⬛ Cats</a></li>
+    <li><a href="{{ url_for('animals', pet_type='rabbits') }}"> 🐰 Rabbits</a></li>
 </ul>
+<h2> Add a Pet </h2>
+<p> Giving up a pet is not easy, but we promise to take good care of them and find them a wonderful new home. </p>
+<form action="{{ url_for('index')}}" method="POST">
+ <label for="name">Name:</label>
+ <input type="text" name="name" id="name">
+    <label for="species">Species:</label>
+    <select name="species" id="species">
+        <option value="dogs">🐶 Dog</option>
+        <option value="cats">🐈‍⬛ Cat</option>
+        <option value="rabbits">🐰 Rabbit</option>
+    </select>
+    <label for="breed">Breed:</label>
+    <input type="text" name="breed" id="breed">
+    <label for="age">Age:</label>
+    <input type="text" name="age" id="age">
+    <label for="description" name="description">Description:</label>
+    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    <input type="submit" value="Add Pet">
+</form>
 {% endblock %}
