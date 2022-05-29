@@ -1,7 +1,6 @@
 from flask import Flask
 from helper import pets
-app = Flask(__name__)
-
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
@@ -44,3 +43,8 @@ def pet(pet_type, pet_id):
               <ul>
               """
   return html
+
+if __name__ == "__main__":
+     app.debug = False
+     port = int(os.environ.get('PORT', 33507))
+     waitress.serve(app, port=port)
