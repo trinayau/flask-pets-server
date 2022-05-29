@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Trina's Pet Sanctuary{% endblock %}
+{% block headers%}{% endblock %}
+{% block content %}
+<h1>🐶 Trina's Pet Sanctuary 🐨</h1>
+<p>Browse through the links below to find your new furry friend:</p>
+<ul>
+<li><a href="{{ url_for('animals', pet_type='dogs') }}"> 🐶 Dogs</a></li>
+<li><a href="{{ url_for('animals', pet_type='cats') }}"> 🐈‍⬛ Cats</a></li>
+<li><a href="{{ url_for('animals', pet_type='rabbits') }}"> 🐰 Rabbits</a></li>
+</ul>
+{% endblock %}

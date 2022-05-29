@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    background-color: antiquewhite;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+img{
+    width: 40%;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: underline;
+}

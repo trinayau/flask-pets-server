@@ -1,48 +1,22 @@
-from flask import Flask
-from helper import pets
-app = Flask(__name__, template_folder='templates')
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from db import pets
+from flask_cors import CORS
+app = Flask(__name__, static_url_path='/static', static_folder='static', template_folder='templates')
+CORS(app)
 
 @app.route('/')
 def index():
-  return """<h1>Adopt a Pet!</h1>
-            <p>Browse through the links below to find your new furry friend:</p>
-            <ul>
-            <li><a href="/animals/dogs">Dogs</a></li>
-            <li><a href="/animals/cats">Cats</a></li>
-            <li><a href="/animals/rabbits">Rabbits</a></li>
-            </ul>
-            """
+  return render_template('index.html')
 
 @app.route('/animals/<pet_type>')
 def animals(pet_type):
-  html = f"""<h1>List of {pet_type}</h1>
-              """
-  html += '<ul>'
-  #step 12 
-  #step 16:
-  # for each index and pet in pets dict of pets type, give a li linking to its individual page
-  #enumerate() is needed to give each one an index and str() to turn it into a string type
-  for index, pet in enumerate(pets[pet_type]):
-    html += f"""<li><a href="/animals/{pet_type}/{str(index)}">{pet["name"]}</a></li>"""
-  return html
+  types = pets[pet_type]
+  return render_template('pet_type.html', pets=types, pet_type=pet_type)
 
-#step 13
 @app.route('/animals/<pet_type>/<int:pet_id>')
 def pet(pet_type, pet_id):
-  #step 14
-  #get specific pet from type and id in request parameters
   pet = pets[pet_type][pet_id]
-  # step 15 - show pet name in html
-  #step 17 - add img, p, ul, li
-  html = f"""<h1>{pet["name"]}</h1>
-              <img src="{pet["url"]}"></img>
-              <p>{pet["description"]}</p>
-              <ul>
-              <li>Breed: {pet["breed"]}</li>
-              <li>Age: {pet["age"]}</li>
-              <ul>
-              """
-  return html
+  return render_template('pet.html', pet=pet)
 
 if __name__ == "__main__":
      app.debug = False
