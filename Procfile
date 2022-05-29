@@ -1,1 +1,1 @@
-web: gunicorn app.py:TrinaFlaskPets
+web: gunicorn app:app
