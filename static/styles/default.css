@@ -3,6 +3,7 @@
 * {
     font-family: 'Poppins', sans-serif;
     background-color: antiquewhite;
+    text-align: center;
 }
 
 h1 {
@@ -10,9 +11,14 @@ h1 {
     text-align: center;
 }
 
+li {
+    list-style-type: none;
+}
+
 img{
     width: 40%;
     text-align: center;
+    border-radius: 5px;
 }
 
 a{
@@ -22,4 +28,26 @@ a{
 
 a:hover{
     text-decoration: underline;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    float: left;
+    padding: 5px;
+}
+
+nav a{
+    padding: 10px;
+    border-radius: 2px;
+}
+nav a:hover{
+    background-color: bisque;
 }
